@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to IIT Delhi Courses</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-image: url('https://imgs.search.brave.com/veemZ7bpeX3eQ6Nd-MU_5_MyeKB4CHzGo_-aZJx5JFM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNy8x/MC8zMS8xNy80NC9j/aGVycmllcy0yOTA1/OTY0XzY0MC5qcGc');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            color: #de830c;
+            font-size: 24px;
+        }
+
+        .container {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        .course-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .course-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 250px;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .course-card h3 {
+            margin: 0;
+            padding: 15px;
+            background-color: #62a4e9;
+            color: rgb(255, 255, 255);
+        }
+
+        .course-buttons {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 15px;
+            background-color: rgba(93, 233, 83, 0.8);
+            border-radius: 0 0 15px 15px;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .course-buttons a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background-color: #0a5068;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .course-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        .course-card:hover .course-buttons {
+            max-height: 200px;
+            padding: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .course-card {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to IIT Delhi Courses</h1>
+
+    <div class="container">
+        <div class="section">
+            <h2>Semester 1 Courses</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <h3>MTL101</h3>
+                    <div class="course-buttons">
+                        <a href="mtl101_lectures.html">Lectures</a>
+                        <a href="mtl101_resources.html">Resources</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>CML101</h3>
+                    <div class="course-buttons">
+                        <a href="phy101_lectures.html">Lectures</a>
+                        <a href="https://dalla111.github.io/cml/">Resources</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>APL100</h3>
+                    <div class="course-buttons">
+                        <a href="phy101_lectures.html">Lectures</a>
+                        <a href="phy101_resources.html">Resources</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>MCP100</h3>
+                    <div class="course-buttons">
+                        <a href="phy101_lectures.html">Lectures</a>
+                        <a href="phy101_resources.html">Resources</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>MCP101</h3>
+                    <div class="course-buttons">
+                        <a href="phy101_lectures.html">Lectures</a>
+                        <a href="phy101_resources.html">Resources</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Semester 2 Courses</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <h3>COL100</h3>
+                    <div class="course-buttons">
+                        <a href="col100_lectures.html">Lectures</a>
+                        <a href="https://dalla111.github.io/col/">Resources</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>MTL101</h3>
+                    <div class="course-buttons">
+                        <a href="https://dalla111.github.io/mtl101/">Lectures</a>
+                        <a href="https://dalla111.github.io/mtlresources/">Resources</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>PYL101</h3>
+                    <div class="course-buttons">
+                        <a href="phy101_lectures.html">Lectures</a>
+                        <a href="phy101_resources.html">Resources</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>ELL101</h3>
+                    <div class="course-buttons">
+                        <a href="phy101_lectures.html">Lectures</a>
+                        <a href="phy101_resources.html">Resources</a>
+                    </div>
+                </div>
+                <div class="course-card">
+                    <h3>PYP100</h3>
+                    <div class="course-buttons">
+                        <a href="phy101_lectures.html">Lectures</a>
+                        <a href="phy101_resources.html">Resources</a>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3>DEVELOPED BY MONIL</h3>
+        <p><a href="mailto:monilsavaliya416@gmail.com" style="color: white;">FOR ANY CHANGES CONTACT: MONIL</a></p>
+        <p>&copy; 2025</p>
+    </footer>
+</body>
+</html>
