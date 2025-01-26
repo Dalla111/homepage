@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
     <title>Welcome to IIT Delhi Courses</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -14,17 +14,19 @@
             font-family: Arial, sans-serif;
             color: white;
         }
+
         h1 {
-            font-size: 3em; 
-            color: #FFD700; 
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500; 
-            animation: glow 1.5s infinite alternate; 
-            background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32); 
-            -webkit-background-clip: text; 
+            font-size: 3em;
+            color: #FFD700;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500;
+            animation: glow 1.5s infinite alternate;
+            background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32);
+            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center;
             margin: 20px 0;
         }
+
         @keyframes glow {
             0% {
                 text-shadow: 3px 3px 10px #FF4500, 0 0 30px #FFD700;
@@ -34,19 +36,46 @@
             }
         }
 
+        .chat-box {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .chat-box-header {
+            padding: 10px;
+            font-size: 1.2em;
+            background-color: #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-box-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            padding: 0 10px;
+        }
+
+        .chat-box:hover .chat-box-content {
+            max-height: 200px;
+            padding: 10px;
+        }
+
+        .chat-box-content div {
+            margin: 5px 0;
+        }
+
         .container {
             padding: 40px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
         }
 
         .course-grid {
@@ -72,16 +101,11 @@
             transform: scale(1.05);
         }
 
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
         .course-card h3 {
             margin: 0;
             padding: 15px;
             background-color: #62a4e9;
-            color: rgb(255, 255, 255);
+            color: white;
         }
 
         .course-buttons {
@@ -91,6 +115,11 @@
             background-color: rgba(93, 233, 83, 0.8);
             border-radius: 0 0 15px 15px;
             transition: max-height 0.5s ease, padding 0.5s ease;
+        }
+
+        .course-card:hover .course-buttons {
+            max-height: 200px;
+            padding: 15px;
         }
 
         .course-buttons a {
@@ -127,65 +156,9 @@
                 font-size: 24px;
             }
         }
-        .chat-box {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        width: 300px;
-        max-height: 50px;
-        overflow: hidden;
-        background-color: #0a5068;
-        color: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        transition: max-height 0.5s ease, width 0.3s ease;
-        z-index: 1000;
-    }
-
-    /* Chat Box Header (Collapsed View) */
-    .chat-box-header {
-        padding: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .chat-box-header:hover {
-        background-color: #0056b3;
-    }
-
-    /* Chat Box Content (Hidden Initially) */
-    .chat-box-content {
-        display: none;
-        padding: 10px;
-        font-size: 14px;
-        max-height: 200px;
-        overflow-y: auto;
-    }
-
-    /* Expanded View on Hover */
-    .chat-box:hover {
-        max-height: 250px;
-        width: 350px;
-    }
-
-    .chat-box:hover .chat-box-content {
-        display: block;
-    }
-
-    /* For Mobile Screens */
-    @media (max-width: 768px) {
-        .chat-box {
-            width: 100%;
-            top: 0;
-            right: 0;
-            border-radius: 0;
-        }
-    }
     </style>
-</head>
+    </head>
+
 <body>
     <h1>Welcome to <span style="color: #32CD32; font-style: italic;">IIT Delhi Courses</span></h1>
     <div class="chat-box">
@@ -280,7 +253,6 @@
                         <a href="https://dalla111.github.io/pyp/">Resources</a>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -291,31 +263,53 @@
         <p>&copy; 2025</p>
     </footer>
     <script>
-         // Connect to WebSocket server
-    const socket = new WebSocket('ws://localhost:8080');
-
-// Function to add notifications dynamically
-function addNotification(message) {
-    const chatContent = document.querySelector('.chat-box-content');
-    const notification = document.createElement('div');
-    notification.textContent = message;
-    chatContent.appendChild(notification);
-
-    // Automatically scroll to the latest notification
-    chatContent.scrollTop = chatContent.scrollHeight;
-}
-
-// Listen for messages from the WebSocket server
-socket.addEventListener('message', (event) => {
-    addNotification(event.data);
-});
-
-// Example: Send a test notification to the server
-setTimeout(() => {
-    socket.send("🔔 This is a test notification sent from the client!");
-}, 5000);
+        // Connect to WebSocket server
+        const socket = new WebSocket('ws://localhost:8080');
+    
+        // Function to add notifications dynamically
+        function addNotification(message) {
+            const chatContent = document.querySelector('.chat-box-content');
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            chatContent.appendChild(notification);
+    
+            // Automatically scroll to the latest notification
+            chatContent.scrollTop = chatContent.scrollHeight;
+        }
+    
+        // Listen for messages from the WebSocket server
+        socket.addEventListener('message', (event) => {
+            addNotification(event.data);
+        });
+    
+        // Example: Send a test notification to the server
+        setTimeout(() => {
+            socket.send("🔔 This is a test notification sent from the client!");
+        }, 5000);
+    
+        // Dropdown toggle functionality
+        document.querySelectorAll('.course-card').forEach((card) => {
+            const buttons = card.querySelector('.course-buttons');
+    
+            card.addEventListener('click', () => {
+                // Close all other dropdowns
+                document.querySelectorAll('.course-buttons').forEach((dropdown) => {
+                    if (dropdown !== buttons) {
+                        dropdown.style.maxHeight = '0';
+                        dropdown.style.padding = '0 15px';
+                    }
+                });
+    
+                // Toggle the clicked dropdown
+                if (buttons.style.maxHeight === '200px') {
+                    buttons.style.maxHeight = '0';
+                    buttons.style.padding = '0 15px';
+                } else {
+                    buttons.style.maxHeight = '200px';
+                    buttons.style.padding = '15px';
+                }
+            });
+        });
     </script>
-    
-    
 </body>
 </html>
