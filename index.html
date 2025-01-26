@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-image: url('https://mmc.ugc.ac.in/S/img/university-cover/IIT-Delhi.jpg');
+            background-image: url('https://imgs.search.brave.com/veemZ7bpeX3eQ6Nd-MU_5_MyeKB4CHzGo_-aZJx5JFM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxNy8x/MC8zMS8xNy80NC9j/aGVycmllcy0yOTA1/OTY0XzY0MC5qcGc');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -65,7 +65,13 @@
             text-align: center;
             overflow: hidden;
             position: relative;
+            transition: transform 0.3s ease;
         }
+
+        .course-card:hover {
+            transform: scale(1.05);
+        }
+
         h2 {
             text-align: center;
             color: #333;
@@ -102,11 +108,6 @@
             background-color: #0056b3;
         }
 
-        .course-card:hover .course-buttons {
-            max-height: 200px;
-            padding: 15px;
-        }
-
         footer {
             text-align: center;
             padding: 20px;
@@ -126,20 +127,88 @@
                 font-size: 24px;
             }
         }
+        .chat-box {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        width: 300px;
+        max-height: 50px;
+        overflow: hidden;
+        background-color: #0a5068;
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: max-height 0.5s ease, width 0.3s ease;
+        z-index: 1000;
+    }
+
+    /* Chat Box Header (Collapsed View) */
+    .chat-box-header {
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .chat-box-header:hover {
+        background-color: #0056b3;
+    }
+
+    /* Chat Box Content (Hidden Initially) */
+    .chat-box-content {
+        display: none;
+        padding: 10px;
+        font-size: 14px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    /* Expanded View on Hover */
+    .chat-box:hover {
+        max-height: 250px;
+        width: 350px;
+    }
+
+    .chat-box:hover .chat-box-content {
+        display: block;
+    }
+
+    /* For Mobile Screens */
+    @media (max-width: 768px) {
+        .chat-box {
+            width: 100%;
+            top: 0;
+            right: 0;
+            border-radius: 0;
+        }
+    }
     </style>
 </head>
 <body>
     <h1>Welcome to <span style="color: #32CD32; font-style: italic;">IIT Delhi Courses</span></h1>
+    <div class="chat-box">
+        <div class="chat-box-header">
+            <span>Notifications</span>
+            <span>🔔</span>
+        </div>
+        <div class="chat-box-content">
+            <div>📢 New course materials available for MTL101!</div>
+            <div>🔔 Assignment deadline extended for APL100.</div>
+            <div>📢 Semester 2 classes start from next Monday.</div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="section">
             <h2>Semester 1 Courses</h2>
             <div class="course-grid">
                 <div class="course-card">
-                    <h3>MTL100</h3>
+                    <h3>MTL101</h3>
                     <div class="course-buttons">
-                        <a href="https://dalla111.github.io/mtl100lecture/">Lectures</a>
-                        <a href="https://dalla111.github.io/mtl100/">Resources</a>
+                        <a href="https://dalla111.github.io/mtl101/">Lectures</a>
+                        <a href="https://dalla111.github.io/mtlresources/">Resources</a>
                     </div>
                 </div>
                 <div class="course-card">
@@ -152,14 +221,14 @@
                 <div class="course-card">
                     <h3>APL100</h3>
                     <div class="course-buttons">
-                        <a href="https://dalla111.github.io/apllecture/">Lectures</a>
+                        <a href="phy101_lectures.html">Lectures</a>
                         <a href="https://dalla111.github.io/apl/">Resources</a>
                     </div>
                 </div>
                 <div class="course-card">
                     <h3>MCP100</h3>
                     <div class="course-buttons">
-                        <a href="https://baka-atul.github.io/MCP_100/">LABS</a>
+                        <a href="phy101_lectures.html">Lectures</a>
                         <a href="https://dalla111.github.io/mcp100/">Resources</a>
                     </div>
                 </div>
@@ -221,5 +290,32 @@
         <p><a href="mailto:monilsavaliya416@gmail.com" style="color: white;">FOR ANY CHANGES CONTACT: MONIL</a></p>
         <p>&copy; 2025</p>
     </footer>
+    <script>
+         // Connect to WebSocket server
+    const socket = new WebSocket('ws://localhost:8080');
+
+// Function to add notifications dynamically
+function addNotification(message) {
+    const chatContent = document.querySelector('.chat-box-content');
+    const notification = document.createElement('div');
+    notification.textContent = message;
+    chatContent.appendChild(notification);
+
+    // Automatically scroll to the latest notification
+    chatContent.scrollTop = chatContent.scrollHeight;
+}
+
+// Listen for messages from the WebSocket server
+socket.addEventListener('message', (event) => {
+    addNotification(event.data);
+});
+
+// Example: Send a test notification to the server
+setTimeout(() => {
+    socket.send("🔔 This is a test notification sent from the client!");
+}, 5000);
+    </script>
+    
+    
 </body>
 </html>
