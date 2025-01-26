@@ -15,9 +15,23 @@
             color: white;
         }
         h1 {
+            font-size: 3em; 
+            color: #FFD700; 
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500; 
+            animation: glow 1.5s infinite alternate; 
+            background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
             text-align: center;
-            color: #de830c;
-            font-size: 24px;
+            margin: 20px 0;
+        }
+        @keyframes glow {
+            0% {
+                text-shadow: 3px 3px 10px #FF4500, 0 0 30px #FFD700;
+            }
+            100% {
+                text-shadow: 3px 3px 20px #32CD32, 0 0 40px #FF6347;
+            }
         }
 
         .container {
@@ -115,7 +129,7 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to IIT Delhi Courses</h1>
+    <h1>Welcome to <span style="color: #32CD32; font-style: italic;">IIT Delhi Courses</span></h1>
 
     <div class="container">
         <div class="section">
