@@ -1,186 +1,251 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Welcome to IIT Delhi Courses</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-       body {
-    background-image: url('https://imgs.search.brave.com/qlk3GsF0x9Bd7P7gZTGiJIK37V3trpu_AVw328MOfp4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzU2LzQ1LzM3/LzM2MF9GXzg1NjQ1/Mzc0M19mVUQwbDk0/ZWhKeVRKSURVSEZE/eHhGWlJ0Zmx2Q01x/NS5qcGc');
-    background-size: cover; /* Ensures the image covers the entire viewport proportionally */
-    background-repeat: no-repeat; /* Prevents the background from repeating */
-    background-position: center center; /* Centers the background */
-    background-attachment: fixed; /* Fixes the background in place during scrolling */
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-}
-
-h2 {
-            font-size: 3em;
-            color: #eedd7c;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1), 0 0 20px #2bcfec;
-            
-            text-align: center;
-            margin: 20px 0;
-        }
-        h1 {
-            font-size: 3em;
-            color: #FFD700;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500;
-            animation: glow 1.5s infinite alternate;
-            background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        @keyframes glow {
-            0% {
-                text-shadow: 3px 3px 10px #FF4500, 0 0 30px #FFD700;
+        <title>Welcome to IIT Delhi Courses</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                background-image: url('https://imgs.search.brave.com/qlk3GsF0x9Bd7P7gZTGiJIK37V3trpu_AVw328MOfp4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzU2LzQ1LzM3/LzM2MF9GXzg1NjQ1/Mzc0M19mVUQwbDk0/ZWhKeVRKSURVSEZE/eHhGWlJ0Zmx2Q01x/NS5qcGc');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-attachment: fixed;
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                color: white;
             }
-            100% {
-                text-shadow: 3px 3px 20px #32CD32, 0 0 40px #FF6347;
+    
+            h2 {
+                font-size: 3em;
+                color: #eedd7c;
+                text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1), 0 0 20px #2bcfec;
+                text-align: center;
+                margin: 20px 0;
             }
-        }
-
-        .chat-box {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 300px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .chat-box-header {
-            padding: 10px;
-            font-size: 1.2em;
-            background-color: #444;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chat-box-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease-in-out;
-            padding: 0 10px;
-        }
-
-        .chat-box:hover .chat-box-content {
-            max-height: 200px;
-            padding: 10px;
-        }
-
-        .chat-box-content div {
-            margin: 5px 0;
-        }
-
-        .container {
-            padding: 40px;
-        }
-
-        .course-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .course-card {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 250px;
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .course-card:hover {
-            transform: scale(1.05);
-        }
-
-        .course-card h3 {
-            margin: 0;
-            padding: 15px;
-            background-color: #62a4e9;
-            color: white;
-        }
-
-        .course-buttons {
-            max-height: 0;
-            overflow: hidden;
-            padding: 0 15px;
-            background-color: rgba(93, 233, 83, 0.8);
-            border-radius: 0 0 15px 15px;
-            transition: max-height 0.5s ease, padding 0.5s ease;
-        }
-
-        .course-card:hover .course-buttons {
-            max-height: 200px;
-            padding: 15px;
-        }
-
-        .course-buttons a {
-            display: block;
-            margin: 10px 0;
-            padding: 10px 15px;
-            background-color: #0a5068;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .course-buttons a:hover {
-            background-color: #0056b3;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .course-card {
-                width: 90%;
-            }
-
+    
             h1 {
-                font-size: 24px;
+                font-size: 3em;
+                color: #FFD700;
+                text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500;
+                animation: glow 1.5s infinite alternate;
+                background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                text-align: center;
+                margin: 20px 0;
             }
-        }
-    </style>
+    
+            @keyframes glow {
+                0% {
+                    text-shadow: 3px 3px 10px #FF4500, 0 0 30px #FFD700;
+                }
+                100% {
+                    text-shadow: 3px 3px 20px #32CD32, 0 0 40px #FF6347;
+                }
+            }
+    
+            .notification-icon {
+                font-size: 24px;
+                cursor: pointer;
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                color: rgb(8, 51, 160);
+                z-index: 101;
+                background-color: rgba(0, 0, 0, 0.6);
+                border-radius: 50%;
+                padding: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+                transition: transform 0.2s ease;
+            }
+    
+            .notification-icon:hover {
+                transform: scale(1.1);
+            }
+    
+            .chat-box {
+                display: none;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                width: 250px;
+                max-height: 300px;
+                background-color: rgba(35, 87, 197, 0.9);
+                border: none;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: 15px;
+                z-index: 100;
+                overflow-y: auto;
+            }
+    
+            .chat-box.open {
+                display: block;
+            }
+    
+            .chat-box-content div {
+                padding: 10px 15px;
+                margin: 5px;
+                background-color: rgba(16, 160, 250, 0.8);
+                color: white;
+                border-radius: 5px;
+                text-align: left;
+                font-size: 14px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+    
+            .chat-box-content div:hover {
+                background-color: #0056b3;
+            }
+    
+            .container {
+                padding: 40px;
+            }
+    
+            .course-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 20px;
+            }
+    
+            .course-card {
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                border-radius: 15px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                width: 250px;
+                text-align: center;
+                overflow: hidden;
+                position: relative;
+                transition: transform 0.3s ease;
+            }
+    
+            .course-card:hover {
+                transform: scale(1.05);
+            }
+    
+            .course-card h3 {
+                margin: 0;
+                padding: 15px;
+                background-color: #2183ec;
+                color: white;
+            }
+    
+            .course-buttons {
+                max-height: 0;
+                overflow: hidden;
+                padding: 0 15px;
+                background-color: rgba(112, 188, 220, 0.8);
+                border-radius: 0 0 15px 15px;
+                transition: max-height 0.5s ease, padding 0.5s ease;
+            }
+    
+            .course-card:hover .course-buttons {
+                max-height: 200px;
+                padding: 15px;
+            }
+    
+            .course-buttons a {
+                display: block;
+                margin: 10px 0;
+                padding: 10px 15px;
+                background-color: #0a5068;
+                color: white;
+                border-radius: 5px;
+                text-decoration: none;
+                transition: background-color 0.3s;
+            }
+    
+            .course-buttons a:hover {
+                background-color: #0056b3;
+            }
+    
+            footer {
+                text-align: center;
+                padding: 20px;
+                background-color: rgba(0, 0, 0, 0.6);
+                color: white;
+                position: relative;
+                bottom: 0;
+                width: 100%;
+            }
+    
+            @media (max-width: 768px) {
+                .course-card {
+                    width: 90%;
+                }
+    
+                h1 {
+                    font-size: 24px;
+                }
+            }
+        </style>
+        <script>
+            function addNotification(message) {
+                const chatBoxContent = document.querySelector('.chat-box-content');
+    
+                const notification = document.createElement('div');
+                notification.textContent = message;
+    
+                // Add deletion logic after 7 days
+                const expirationTime = Date.now() + 7 * 24 * 60 * 60 * 1000;
+                notification.dataset.expiration = expirationTime;
+    
+                chatBoxContent.appendChild(notification);
+                chatBoxContent.scrollTop = chatBoxContent.scrollHeight;
+    
+                // Show chat box temporarily
+                document.querySelector('.chat-box').classList.add('open');
+                setTimeout(() => {
+                    document.querySelector('.chat-box').classList.remove('open');
+                }, 5000);
+            }
+    
+            function checkAndRemoveExpiredNotifications() {
+                const now = Date.now();
+                const chatBoxContent = document.querySelector('.chat-box-content');
+    
+                chatBoxContent.childNodes.forEach((notification) => {
+                    if (notification.dataset && notification.dataset.expiration && now > notification.dataset.expiration) {
+                        notification.remove();
+                    }
+                });
+            }
+    
+            document.querySelector('.notification-icon').addEventListener('mouseover', () => {
+                document.querySelector('.chat-box').classList.add('open');
+            });
+    
+            document.querySelector('.notification-icon').addEventListener('mouseout', () => {
+                document.querySelector('.chat-box').classList.remove('open');
+            });
+    
+            setInterval(checkAndRemoveExpiredNotifications, 60000); // Run cleanup every minute
+    
+            setTimeout(() => {
+                addNotification('📢 THERE WILL BE A QUIZ OF MTL101 ON 29 JAN!');
+            }, 2000);
+        </script>
     </head>
+    
+    
 
 <body>
     <h1>Welcome to <span style="color: #32CD32; font-style: italic;">IIT Delhi Courses</span></h1>
-    <div class="chat-box">
-        <div class="chat-box-header">
-            <span>Notifications</span>
-            <span>🔔</span>
-        </div>
-        <div class="chat-box-content">
-            <div>📢 THERE WILL BE A QUIZ OF MTL101 ON 29 JAN!</div>
-            <div>🔔 SITE IS UNDER MAINTENANCE : ) </div>
-            <div>📢 BE PATIENT. WE LOVE YOU.</div>
+    <div style="position: relative;">
+        <div class="notification-icon" onclick="toggleNotifications()">🔔</div>
+        <div class="chat-box">
+            <div class="chat-box-header"></div>
+            <div class="chat-box-content">
+                <div>📢 THERE WILL BE A QUIZ OF MTL101 ON 29 JAN!</div>
+                <div>🔔 SITE IS UNDER MAINTENANCE : )</div>
+                <div>📢 BE PATIENT.</div>
+            </div>
         </div>
     </div>
+    
 
     <div class="container">
         <div class="section">
@@ -279,53 +344,91 @@ h2 {
         <p>&copy; 2025</p>
     </footer>
     <script>
-        // Connect to WebSocket server
-        const socket = new WebSocket('ws://localhost:8080');
+        // Add scroll behavior to the notification box
+        const chatContent = document.querySelector('.chat-box-content');
+        chatContent.style.overflowY = 'auto';
+        chatContent.style.maxHeight = '200px'; // Limit height for scrolling
     
-        // Function to add notifications dynamically
+        // Function to add a notification to the notification dropdown
         function addNotification(message) {
             const chatContent = document.querySelector('.chat-box-content');
+    
+            // Create a new notification div
             const notification = document.createElement('div');
             notification.textContent = message;
+            notification.dataset.timestamp = Date.now(); // Add timestamp for deletion
             chatContent.appendChild(notification);
     
             // Automatically scroll to the latest notification
             chatContent.scrollTop = chatContent.scrollHeight;
         }
     
-        // Listen for messages from the WebSocket server
-        socket.addEventListener('message', (event) => {
-            addNotification(event.data);
-        });
+        // Function to delete notifications older than 7 days
+        function cleanOldNotifications() {
+            const now = Date.now();
+            const notifications = chatContent.querySelectorAll('div');
     
-        // Example: Send a test notification to the server
-        setTimeout(() => {
-            socket.send("🔔 This is a test notification sent from the client!");
-        }, 5000);
-    
-        // Dropdown toggle functionality
-        document.querySelectorAll('.course-card').forEach((card) => {
-            const buttons = card.querySelector('.course-buttons');
-    
-            card.addEventListener('click', () => {
-                // Close all other dropdowns
-                document.querySelectorAll('.course-buttons').forEach((dropdown) => {
-                    if (dropdown !== buttons) {
-                        dropdown.style.maxHeight = '0';
-                        dropdown.style.padding = '0 15px';
-                    }
-                });
-    
-                // Toggle the clicked dropdown
-                if (buttons.style.maxHeight === '200px') {
-                    buttons.style.maxHeight = '0';
-                    buttons.style.padding = '0 15px';
-                } else {
-                    buttons.style.maxHeight = '200px';
-                    buttons.style.padding = '15px';
+            notifications.forEach((notification) => {
+                const timestamp = parseInt(notification.dataset.timestamp, 10);
+                if (now - timestamp > 7 * 24 * 60 * 60 * 1000) { // 7 days in milliseconds
+                    notification.remove();
                 }
             });
+        }
+    
+        const notificationIcon = document.querySelector('.notification-icon');
+        const chatBox = document.querySelector('.chat-box');
+    
+        let isNotificationBoxOpen = false; // Track the state of the notification box
+    
+        // Auto open on hover
+        notificationIcon.addEventListener('mouseenter', () => {
+            if (!isNotificationBoxOpen) {
+                chatBox.classList.add('open');
+            }
         });
+    
+        // Close dropdown on hover out if not manually opened
+        notificationIcon.addEventListener('mouseleave', () => {
+            if (!isNotificationBoxOpen) {
+                chatBox.classList.remove('open');
+            }
+        });
+    
+        // Toggle dropdown on click
+        notificationIcon.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent closing when clicking the icon
+            isNotificationBoxOpen = !isNotificationBoxOpen;
+    
+            if (isNotificationBoxOpen) {
+                chatBox.classList.add('open');
+            } else {
+                chatBox.classList.remove('open');
+            }
+        });
+    
+        // Close dropdown when clicking outside
+        document.addEventListener('click', () => {
+            if (isNotificationBoxOpen) {
+                chatBox.classList.remove('open');
+                isNotificationBoxOpen = false;
+            }
+        });
+    
+        // Prevent closing when interacting with the dropdown
+        chatBox.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    
+        // Clean old notifications periodically (e.g., every hour)
+        setInterval(cleanOldNotifications, 60 * 60 * 1000);
+    
+        // Example: Simulate adding a notification
+        setTimeout(() => {
+            addNotification("📢 THERE WILL BE A QUIZ OF MTL101 ON 29 JAN!");
+        }, 2000);
     </script>
+    
+    
 </body>
 </html>
