@@ -15,6 +15,24 @@
                 font-family: Arial, sans-serif;
                 color: white;
             }
+            .container {
+    width: 100%;                   /* Full width */
+    height: auto;
+    aspect-ratio: 16 / 9;          /* Default aspect ratio for larger screens */
+}
+
+@media (max-width: 768px) {
+    .container {
+        aspect-ratio: 4 / 3;       /* Taller aspect ratio for mobile screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        aspect-ratio: 1 / 1;       /* Square aspect ratio for very small screens */
+    }
+}
+
     
             h2 {
                 font-size: 3em;
