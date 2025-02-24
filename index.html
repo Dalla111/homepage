@@ -5,50 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta property="og:image" content="https://imgs.search.brave.com/jacvu7mNaETxu4kEu5pPV6FtZVVmN0M6Av6fvFvEEDs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA0Lzk0Lzc2LzI1/LzM2MF9GXzQ5NDc2/MjUwN19BcFhMWTdT/NXVoOUFtdmZuRlhX/QzJtbmpwdzN4ZHlm/Vi5qcGc" />
     <title>Welcome to IIT Delhi Courses</title>
+
     <style>
-        /* General Styles */
+        /* Common Styles */
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            background-image: url('http://img.collegepravesh.com/2013/06/IIT-Delhi-5-Mathematical-Department.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-attachment: fixed;
+            font-family: 'Segoe UI', Arial, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            transition: background 0.5s, color 0.5s;
+        }
+        h1, h2 {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+        h1, h2 {
+            font-size: 3em;
+        color: #FFD700;
+        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500;
+        animation: glow 1.5s infinite alternate;
+        background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         }
 
         h1 {
-            font-size: 2.5em;
-            color: #FFD700;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500;
+            font-size: 3em;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
             animation: glow 1.5s infinite alternate;
-            background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin: 20px 0;
+            color: white;
         }
 
         h2 {
             font-size: 2em;
-            color: #eedd7c;
             text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1), 0 0 20px #2bcfec;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        @keyframes glow {
-            0% {
-                text-shadow: 3px 3px 10px #FF4500, 0 0 30px #FFD700;
-            }
-            100% {
-                text-shadow: 3px 3px 20px #32CD32, 0 0 40px #FF6347;
-            }
         }
 
         .container {
@@ -64,8 +57,6 @@
         }
 
         .course-card {
-            background-color: rgba(255, 255, 255, 0.9);
-            color: #333;
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 100%;
@@ -83,15 +74,13 @@
         .course-card h3 {
             margin: 0;
             padding: 15px;
-            background-color: #2183ec;
-            color: white;
+            font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
         }
 
         .course-buttons {
             max-height: 0;
             overflow: hidden;
             padding: 0 15px;
-            background-color: rgba(112, 188, 220, 0.8);
             border-radius: 0 0 15px 15px;
             transition: max-height 0.5s ease, padding 0.5s ease;
         }
@@ -105,140 +94,321 @@
             display: block;
             margin: 10px 0;
             padding: 10px 15px;
-            background-color: #0a5068;
-            color: white;
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s;
-        }
-
-        .course-buttons a:hover {
-            background-color: #0056b3;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         footer {
             text-align: center;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.6);
-            color: white;
             width: 100%;
         }
 
-        /* Mobile Responsiveness */
+        /* Normal Mode Styles */
+        .normal-mode {
+            background-image: url('https://imgs.search.brave.com/CrMiqfmmsQ3fMSb7WH7j9FalVua5qjVyqeo3cwNZZyM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA0LzI1LzUzLzMy/LzM2MF9GXzQyNTUz/MzI4MV9nQTZQaVBY/dzNCUnRMd0VsblEz/UWpJc0VCN2VBMXRa/WC5qcGc');
+            background-size: cover;
+            color: white;
+        }
+
+        .normal-mode  h1 {
+            color: #ffcc00;
+        }
+
+        .normal-mode h2 {
+            color: #eedd7c;
+        }
+
+        .normal-mode .course-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .normal-mode .course-card h3 {
+            background-color: #2183ec;
+            color: white;
+        }
+
+        .normal-mode .course-buttons {
+            background-color: rgba(112, 188, 220, 0.8);
+        }
+
+        .normal-mode .course-buttons a {
+            background-color: #0a5068;
+            color: white;
+        }
+
+        .normal-mode .course-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        .normal-mode footer {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+
+        /* Yash Mode Styles */
+        .yash-mode {
+            background-image: url('https://wallpapercave.com/wp/wp1895449.jpg');
+            background-size: cover;
+            color: #000000;
+        }
+
+        .yash-mode h1 {
+            color: #000000;
+        }
+
+        .yash-mode h2 {
+            color: #0d0d0d;
+        }
+
+        .yash-mode .course-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .yash-mode .course-card h3 {
+            background-color: #ff6600;
+            color: #1a1a1a;
+        }
+
+        .yash-mode .course-buttons {
+            background-color: rgba(255, 102, 0, 0.8);
+        }
+
+        .yash-mode .course-buttons a {
+            background-color: #333;
+            color: #ffcc00;
+        }
+
+        .yash-mode .course-buttons a:hover {
+            background-color: #4d4d4d;
+        }
+
+        .yash-mode footer {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+        }
+
+
+        /* Toggle Switch */
+        .mode-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .mode-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: #FFD700;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
             }
-
             h2 {
                 font-size: 1.5em;
             }
-
-            .course-card {
-                width: 100%;
-                max-width: 100%;
-            }
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body>
-    <h1>Welcome to <span style="color: #32CD32; font-style: italic;">IIT Delhi Courses</span></h1>
-    <div class="container">
-        <div class="section">
-            <h2>Semester 1 Courses</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <h3>MTL100</h3>
-                    <div class="course-buttons">
-                        <a href="https://dalla111.github.io/mtl100lecture/">Lectures</a>
-                        <a href="https://dalla111.github.io/mtl100/">Resources</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <h3>CML101</h3>
-                    <div class="course-buttons">
-                        <a href="https://dalla111.github.io/cmllecture/">Lectures</a>
-                        <a href="https://dalla111.github.io/cml/">Resources</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <h3>APL100</h3>
-                    <div class="course-buttons">
-                        <a href="https://dalla111.github.io/apllecture/">Lectures</a>
-                        <a href="https://dalla111.github.io/apl/">Resources</a>
-                    </div>
-                </div>
-                <div class="course-card">
-                    <h3>MCP100</h3>
-                    <div class="course-buttons">
-                        <a href="https://dalla111.github.io/MCP100LECTURES/">Resources</a>
-                        
-                    </div>
-                </div>
-                <div class="course-card">
-                    <h3>MCP101</h3>
-                    <div class="course-buttons">
-                        <a href="https://dalla111.github.io/mcp101/">coming soon</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body class="normal-mode">
+    <!-- Toggle Switch -->
+    <label class="mode-switch">
+        <input type="checkbox" id="modeToggle">
+        <span class="toggle-slider"></span>
+    </label>
 
-        <div class="section">
-            <h2>Semester 2 Courses</h2>
-            <div class="course-grid">
-                <div class="course-card">
-                    <h3>COL100</h3>
-                    <div class="course-buttons">
-                        <a href="https://baka-atul.github.io/COL100/">Lectures</a>
-                        <a href="https://dalla111.github.io/col/">Resources</a>
+    <!-- Normal Mode -->
+    <div class="normal-mode-content">
+        <h1>Welcome to IIT Delhi Courses</h1>
+        <div class="container">
+            <div class="section">
+                <h2>Semester 1 Courses</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h3>MTL100</h3>
+                        <div class="course-buttons">
+                            <a href="https://dalla111.github.io/mtl100lecture/">Lectures</a>
+                            <a href="https://dalla111.github.io/mtl100/">Resources</a>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <h3>CML101</h3>
+                        <div class="course-buttons">
+                            <a href="https://dalla111.github.io/cmllecture/">Lectures</a>
+                            <a href="https://dalla111.github.io/cml/">Resources</a>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <h3>APL100</h3>
+                        <div class="course-buttons">
+                            <a href="https://dalla111.github.io/apllecture/">Lectures</a>
+                            <a href="https://dalla111.github.io/apl/">Resources</a>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <h3>MCP100</h3>
+                        <div class="course-buttons">
+                            <a href="https://dalla111.github.io/MCP100LECTURES/">Resources</a>
+                            
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <h3>MCP101</h3>
+                        <div class="course-buttons">
+                            <a href="https://dalla111.github.io/mcp101/">coming soon</a>
+                        </div>
                     </div>
                 </div>
-                <div class="course-card">
-                    <h3>MTL101</h3>
-                    <div class="course-buttons">
-                        <a href="https://dalla111.github.io/mtl101/">Lectures</a>
-                        <a href="https://dalla111.github.io/mtlresources/">Resources</a>
+            </div>
+            <div class="section">
+                <h2>Semester 2 Courses</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h3>COL100</h3>
+                        <div class="course-buttons">
+                            <a href="https://baka-atul.github.io/COL100/">Lectures</a>
+                            <a href="https://dalla111.github.io/col/">Resources</a>
+                        </div>
                     </div>
-                </div>
-                <div class="course-card">
-                    <h3>PYL101</h3>
-                    <div class="course-buttons">
-                        <a href="https://dalla111.github.io/pyl/">Resources</a>
+                    <div class="course-card">
+                        <h3>MTL101</h3>
+                        <div class="course-buttons">
+                            <a href="https://dalla111.github.io/mtl101/">Lectures</a>
+                            <a href="https://dalla111.github.io/mtlresources/">Resources</a>
+                        </div>
                     </div>
-                </div>
-                <div class="course-card">
-                    <h3>ELL101</h3>
-                    <div class="course-buttons">
-                        <a href="https://dalla111.github.io/ELLLECTURE/">Lectures</a>
-                        <a href="https://dalla111.github.io/ell/">Resources</a>
+                    <div class="course-card">
+                        <h3>PYL101</h3>
+                        <div class="course-buttons">
+                            <a href="https://dalla111.github.io/pyl/">Resources</a>
+                        </div>
                     </div>
-                </div>
-                <div class="course-card">
-                    <h3>PYP101</h3>
-                    <div class="course-buttons">
-                        <a href="https://baka-atul.github.io/PYP_101/">Resources</a>
+                    <div class="course-card">
+                        <h3>ELL101</h3>
+                        <div class="course-buttons">
+                            <a href="https://dalla111.github.io/ELLLECTURE/">Lectures</a>
+                            <a href="https://dalla111.github.io/ell/">Resources</a>
+                        </div>
                     </div>
-                </div>
-                <div class="course-card">
-                    <h3>ELP101</h3>
-                    <div class="course-buttons">
-                        <a href="https://baka-atul.github.io/elp_101/">Resources</a>
+                    <div class="course-card">
+                        <h3>PYP101</h3>
+                        <div class="course-buttons">
+                            <a href="https://baka-atul.github.io/PYP_101/">Resources</a>
+                        </div>
+                    </div>
+                    <div class="course-card">
+                        <h3>ELP101</h3>
+                        <div class="course-buttons">
+                            <a href="https://baka-atul.github.io/elp_101/">Resources</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <footer>
+            <h3>ALL RIGHTS ARE RESERVED</h3>
+            <p><a href="mailto:resourcesfresher@gmail.com" style="color: white;">FOR ANY CHANGES CONTACT</a></p>
+            <p>&copy; 2025</p>
+        </footer>
     </div>
 
-    <footer>
-        <h3>ALL RIGHTS ARE RESERVED</h3>
-        <p><a href="mailto:resourcesfresher@gmail.com" style="color: white;">FOR ANY CHANGES CONTACT</a></p>
-        <p>&copy; 2025</p>
-    </footer>
+    <!-- Yash Mode -->
+    <div class="yash-mode-content" style="display: none;">
+        <h1>Back to 2022</h1>
+        <div class="container">
+            <div class="section">
+                <h2>Semester 1 Courses</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h3>YASH101</h3>
+                        <div class="course-buttons">
+                            <a href="#">Yash's Lectures</a>
+                            <a href="#">Yash's Resources</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <h2>Semester 2 Courses</h2>
+                <div class="course-grid">
+                    <div class="course-card">
+                        <h3>YASH102</h3>
+                        <div class="course-buttons">
+                            <a href="#">Yash's Lectures</a>
+                            <a href="#">Yash's Resources</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h3>YASH AGARWAL MODE</h3>
+            <p><a href="mailto:yash@example.com" style="color: #ffcc00;">Contact Yash</a></p>
+            <p>&copy; 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        const modeToggle = document.getElementById('modeToggle');
+        const body = document.body;
+        const normalContent = document.querySelector('.normal-mode-content');
+        const yashContent = document.querySelector('.yash-mode-content');
+
+        modeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.remove('normal-mode');
+                body.classList.add('yash-mode');
+                normalContent.style.display = 'none';
+                yashContent.style.display = 'block';
+            } else {
+                body.classList.add('normal-mode');
+                body.classList.remove('yash-mode');
+                normalContent.style.display = 'block';
+                yashContent.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
