@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta property="og:image" content="https://imgs.search.brave.com/jacvu7mNaETxu4kEu5pPV6FtZVVmN0M6Av6fvFvEEDs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA0Lzk0Lzc2LzI1/LzM2MF9GXzQ5NDc2/MjUwN19BcFhMWTdT/NXVoOUFtdmZuRlhX/QzJtbmpwdzN4ZHlm/Vi5qcGc" />
+    <meta property="og:image" content="https://imgs.search.brave.com/jacvu7mNaETxu4kEu5pPV6FtZVVmN0M6Av6fvFvEEDs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA0Lzk0Lzc2LzI1/LzM2MF9GXzQ5NDc2/MjUwN19BcFhMWTdT/NXVoOUFtdmZuRlhX/QzJtbmpwdzN4ZHlm/Vi5qcGc">
     <title>Welcome to IIT Delhi Courses</title>
-
     <style>
-        /* Common Styles */
+        /* Original Styles with Enhanced Transitions */
         body {
             margin: 0;
             padding: 0;
@@ -15,33 +14,28 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            transition: background 0.5s, color 0.5s;
+            transition: background 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 0.8s ease;
         }
-        h1, h2 {
-        text-align: center;
-        margin: 20px 0;
-    }
 
         h1, h2 {
-            font-size: 3em;
-        color: #FFD700;
-        text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500;
-        animation: glow 1.5s infinite alternate;
-        background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin: 20px 0;
         }
 
         h1 {
             font-size: 3em;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+            color: #FFD700;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7), 0 0 20px #FF4500;
             animation: glow 1.5s infinite alternate;
-            color: white;
+            background: linear-gradient(90deg, #FF6347, #FFD700, #32CD32);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         h2 {
             font-size: 2em;
             text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1), 0 0 20px #2bcfec;
+            color: #eedd7c;
         }
 
         .container {
@@ -111,14 +105,6 @@
             background-image: url('https://imgs.search.brave.com/CrMiqfmmsQ3fMSb7WH7j9FalVua5qjVyqeo3cwNZZyM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzA0LzI1LzUzLzMy/LzM2MF9GXzQyNTUz/MzI4MV9nQTZQaVBY/dzNCUnRMd0VsblEz/UWpJc0VCN2VBMXRa/WC5qcGc');
             background-size: cover;
             color: white;
-        }
-
-        .normal-mode  h1 {
-            color: #ffcc00;
-        }
-
-        .normal-mode h2 {
-            color: #eedd7c;
         }
 
         .normal-mode .course-card {
@@ -192,6 +178,20 @@
             color: white;
         }
 
+        /* Transition Fixes */
+        .content-section {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .content-section.active {
+            opacity: 1;
+            visibility: visible;
+            position: relative;
+        }
 
         /* Toggle Switch */
         .mode-switch {
@@ -242,6 +242,28 @@
             transform: translateX(26px);
         }
 
+        /* Year Switcher */
+        .year-switcher {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .year-switcher select {
+            padding: 12px 24px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            border: 2px solid #FFD700;
+            background-color: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            cursor: pointer;
+        }
+
+        .yash-mode .year-switcher select {
+            border-color: #07608c;
+            color: #07608c;
+            background-color: rgba(7, 96, 140, 0.1);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
@@ -250,94 +272,124 @@
                 font-size: 1.5em;
             }
         }
+         /* ... (previous styles remain unchanged) ... */
+
+        /* Add card entry animations */
+        .course-card {
+            transform: translateY(20px);
+            opacity: 0;
+            animation: cardEntry 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        @keyframes cardEntry {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .course-card:nth-child(1) { animation-delay: 0.1s; }
+        .course-card:nth-child(2) { animation-delay: 0.2s; }
+        .course-card:nth-child(3) { animation-delay: 0.3s; }
+        .course-card:nth-child(4) { animation-delay: 0.4s; }
+        .course-card:nth-child(5) { animation-delay: 0.5s; }
+        .course-card:nth-child(6) { animation-delay: 0.6s; }
     </style>
 </head>
 <body class="normal-mode">
-    <!-- Toggle Switch -->
     <label class="mode-switch">
         <input type="checkbox" id="modeToggle">
         <span class="toggle-slider"></span>
     </label>
 
-    <!-- Normal Mode -->
-    <div class="normal-mode-content">
+    <div class="year-switcher">
+        <select id="yearSelect">
+            <option value="1">Year 1</option>
+        </select>
+    </div>
+
+    <!-- Normal Mode Content -->
+    <div class="normal-mode-content content-section active">
         <h1>Welcome to IIT Delhi Courses</h1>
         <div class="container">
-            <div class="section">
-                <h2>Semester 1 Courses</h2>
-                <div class="course-grid">
-                    <div class="course-card">
-                        <h3>MTL100</h3>
-                        <div class="course-buttons">
-                            <a href="https://dalla111.github.io/mtl100lecture/">Lectures</a>
-                            <a href="https://dalla111.github.io/mtl100/">Resources</a>
+            <div class="semester-section active" data-semester="1">
+                <div class="section">
+                    <h2>Semester 1 Courses</h2>
+                    <div class="course-grid">
+                        <div class="course-card">
+                            <h3>MTL100</h3>
+                            <div class="course-buttons">
+                                <a href="https://dalla111.github.io/mtl100lecture/">Lectures</a>
+                                <a href="https://dalla111.github.io/mtl100/">Resources</a>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <h3>CML101</h3>
+                            <div class="course-buttons">
+                                <a href="https://dalla111.github.io/cmllecture/">Lectures</a>
+                                <a href="https://dalla111.github.io/cml/">Resources</a>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <h3>APL100</h3>
+                            <div class="course-buttons">
+                                <a href="https://dalla111.github.io/apllecture/">Lectures</a>
+                                <a href="https://dalla111.github.io/apl/">Resources</a>
+                            </div>
+                        </div>
+                        <div class="course-card">
+                            <h3>MCP100</h3>
+                            <div class="course-buttons">
+                                <a href="https://dalla111.github.io/MCP100LECTURES/">Resources</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="course-card">
-                        <h3>CML101</h3>
-                        <div class="course-buttons">
-                            <a href="https://dalla111.github.io/cmllecture/">Lectures</a>
-                            <a href="https://dalla111.github.io/cml/">Resources</a>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>APL100</h3>
-                        <div class="course-buttons">
-                            <a href="https://dalla111.github.io/apllecture/">Lectures</a>
-                            <a href="https://dalla111.github.io/apl/">Resources</a>
-                        </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>MCP100</h3>
-                        <div class="course-buttons">
-                            <a href="https://dalla111.github.io/MCP100LECTURES/">Resources</a>
-                            
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
-            <div class="section">
-                <h2>Semester 2 Courses</h2>
-                <div class="course-grid">
-                    <div class="course-card">
-                        <h3>COL100</h3>
-                        <div class="course-buttons">
-                            <a href="https://baka-atul.github.io/COL100/">Lectures</a>
-                            <a href="https://dalla111.github.io/col/">Resources</a>
+
+            <div class="semester-section" data-semester="2">
+                <div class="section">
+                    <h2>Semester 2 Courses</h2>
+                    <div class="course-grid">
+                        <div class="course-card">
+                            <h3>COL100</h3>
+                            <div class="course-buttons">
+                                <a href="https://baka-atul.github.io/COL100/">Lectures</a>
+                                <a href="https://dalla111.github.io/col/">Resources</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>MTL101</h3>
-                        <div class="course-buttons">
-                            <a href="https://dalla111.github.io/mtl101/">Lectures</a>
-                            <a href="https://dalla111.github.io/mtlresources/">Resources</a>
+                        <div class="course-card">
+                            <h3>MTL101</h3>
+                            <div class="course-buttons">
+                                <a href="https://dalla111.github.io/mtl101/">Lectures</a>
+                                <a href="https://dalla111.github.io/mtlresources/">Resources</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>PYL101</h3>
-                        <div class="course-buttons">
-                            <a href="https://monilsavaliya.github.io/pyl/">Lectures</a>
-                            <a href="https://dalla111.github.io/pyl/">Resources</a>
+                        <div class="course-card">
+                            <h3>PYL101</h3>
+                            <div class="course-buttons">
+                                <a href="https://monilsavaliya.github.io/pyl/">Lectures</a>
+                                <a href="https://dalla111.github.io/pyl/">Resources</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>ELL101</h3>
-                        <div class="course-buttons">
-                            <a href="https://dalla111.github.io/ELLLECTURE/">Lectures</a>
-                            <a href="https://dalla111.github.io/ell/">Resources</a>
+                        <div class="course-card">
+                            <h3>ELL101</h3>
+                            <div class="course-buttons">
+                                <a href="https://dalla111.github.io/ELLLECTURE/">Lectures</a>
+                                <a href="https://dalla111.github.io/ell/">Resources</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>PYP101</h3>
-                        <div class="course-buttons">
-                            <a href="https://baka-atul.github.io/PYP_101/">Resources</a>
+                        <div class="course-card">
+                            <h3>PYP101</h3>
+                            <div class="course-buttons">
+                                <a href="https://baka-atul.github.io/PYP_101/">Resources</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>ELP101</h3>
-                        <div class="course-buttons">
-                            <a href="https://baka-atul.github.io/elp_101/">Resources</a>
+                        <div class="course-card">
+                            <h3>ELP101</h3>
+                            <div class="course-buttons">
+                                <a href="https://baka-atul.github.io/elp_101/">Resources</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -350,78 +402,82 @@
         </footer>
     </div>
 
-    <!-- Yash Mode -->
-    <div class="yash-mode-content" style="display: none;">
+    <!-- Yash Mode Content -->
+    <div class="yash-mode-content content-section">
         <h1>Back to 2022</h1>
         <div class="container">
-            <div class="section">
-                <h2>Semester 1 Courses</h2>
-                <div class="course-grid">
-                    <div class="course-card">
-                        <h3>MTL100</h3>
-                        <div class="course-buttons">
-                            <a href="https://monilsavaliya.github.io/mtl100/">2022 LECTURES</a>
-                            <a href="https://monilsavaliya.github.io/mtl100l/">PERSONALISED</a>
+            <div class="semester-section active" data-semester="1">
+                <div class="section">
+                    <h2>Semester 1 Courses</h2>
+                    <div class="course-grid">
+                        <div class="course-card">
+                            <h3>MTL100</h3>
+                            <div class="course-buttons">
+                                <a href="https://monilsavaliya.github.io/mtl100/">2022 LECTURES</a>
+                                <a href="https://monilsavaliya.github.io/mtl100l/">PERSONALISED</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>CML101</h3>
-                        <div class="course-buttons">
-                            <a href="https://monilsavaliya.github.io/CML101/">2022 LECTURES</a>
-                            <a href="https://monilsavaliya.github.io/CMLNEW/">PERSONALISED</a>
+                        <div class="course-card">
+                            <h3>CML101</h3>
+                            <div class="course-buttons">
+                                <a href="https://monilsavaliya.github.io/CML101/">2022 LECTURES</a>
+                                <a href="https://monilsavaliya.github.io/CMLNEW/">PERSONALISED</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>MCP101</h3>
-                        <div class="course-buttons">
-                            <a href="https://monilsavaliya.github.io/mcp101/">PERSONALISED</a>
+                        <div class="course-card">
+                            <h3>MCP101</h3>
+                            <div class="course-buttons">
+                                <a href="https://monilsavaliya.github.io/mcp101/">PERSONALISED</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>MCP100</h3>
-                        <div class="course-buttons">
-                            <a href="https://monilsavaliya.github.io/mcp100/">2022 LECTURES</a>
-                            <a href="https://monilsavaliya.github.io/mcp100-personalised/">PERSONALISED</a>
+                        <div class="course-card">
+                            <h3>MCP100</h3>
+                            <div class="course-buttons">
+                                <a href="https://monilsavaliya.github.io/mcp100/">2022 LECTURES</a>
+                                <a href="https://monilsavaliya.github.io/mcp100-personalised/">PERSONALISED</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="section">
-                <h2>Semester 2 Courses</h2>
-                <div class="course-grid">
-                    <div class="course-card">
-                        <h3>PYP100</h3>
-                        <div class="course-buttons">
-                            <a href="https://monilsavaliya.github.io/pyp100/">2022 LECTURES</a>
-                            <a href="https://monilsavaliya.github.io/PYP100_personalised-/">PERSONALISED</a>
+
+            <div class="semester-section" data-semester="2">
+                <div class="section">
+                    <h2>Semester 2 Courses</h2>
+                    <div class="course-grid">
+                        <div class="course-card">
+                            <h3>PYP100</h3>
+                            <div class="course-buttons">
+                                <a href="https://monilsavaliya.github.io/pyp100/">2022 LECTURES</a>
+                                <a href="https://monilsavaliya.github.io/PYP100_personalised-/">PERSONALISED</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>COL100</h3>
-                        <div class="course-buttons">
-                            <a href="https://monilsavaliya.github.io/col/">2022 LECTURES</a>
-                            <a href="https://monilsavaliya.github.io/colp/">PERSONALISED</a>
+                        <div class="course-card">
+                            <h3>COL100</h3>
+                            <div class="course-buttons">
+                                <a href="https://monilsavaliya.github.io/col/">2022 LECTURES</a>
+                                <a href="https://monilsavaliya.github.io/colp/">PERSONALISED</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>MTL101</h3>
-                        <div class="course-buttons">
-                   
-                            <a href="https://baka-atul.github.io/mtl101/">PERSONALISED</a>
+                        <div class="course-card">
+                            <h3>MTL101</h3>
+                            <div class="course-buttons">
+                                <a href="https://baka-atul.github.io/mtl101/">PERSONALISED</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>PYL101</h3>
-                        <div class="course-buttons">
-                            <a href="https://monilsavaliya.github.io/pyl101l/">2022 LECTURES</a>
-                            <a href="https://monilsavaliya.github.io/pyl101/">PERSONALISED</a>
+                        <div class="course-card">
+                            <h3>PYL101</h3>
+                            <div class="course-buttons">
+                                <a href="https://monilsavaliya.github.io/pyl101l/">2022 LECTURES</a>
+                                <a href="https://monilsavaliya.github.io/pyl101/">PERSONALISED</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="course-card">
-                        <h3>ELP101</h3>
-                        <div class="course-buttons">
-                            <a href="https://monilsavaliya.github.io/ELP101-LECTURES/">2022 LECTURES</a>
-                            <a href="https://monilsavaliya.github.io/elp-personalised/">PERSONALISED</a>
+                        <div class="course-card">
+                            <h3>ELP101</h3>
+                            <div class="course-buttons">
+                                <a href="https://monilsavaliya.github.io/ELP101-LECTURES/">2022 LECTURES</a>
+                                <a href="https://monilsavaliya.github.io/elp-personalised/">PERSONALISED</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -435,24 +491,58 @@
     </div>
 
     <script>
+        // State Management
         const modeToggle = document.getElementById('modeToggle');
         const body = document.body;
-        const normalContent = document.querySelector('.normal-mode-content');
-        const yashContent = document.querySelector('.yash-mode-content');
-
+        
+        // Load saved state
+        const savedMode = localStorage.getItem('mode');
+        if(savedMode) {
+            body.className = savedMode;
+            modeToggle.checked = savedMode === 'yash-mode';
+        }
+    
+        // Mode Switch
         modeToggle.addEventListener('change', function() {
-            if (this.checked) {
-                body.classList.remove('normal-mode');
-                body.classList.add('yash-mode');
-                normalContent.style.display = 'none';
-                yashContent.style.display = 'block';
-            } else {
-                body.classList.add('normal-mode');
-                body.classList.remove('yash-mode');
-                normalContent.style.display = 'block';
-                yashContent.style.display = 'none';
-            }
+            const isYashMode = this.checked;
+            body.classList.toggle('normal-mode', !isYashMode);
+            body.classList.toggle('yash-mode', isYashMode);
+            
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const activeContent = isYashMode 
+                ? document.querySelector('.yash-mode-content')
+                : document.querySelector('.normal-mode-content');
+            
+            activeContent.classList.add('active');
+            localStorage.setItem('mode', body.className);
+    
+            // Reset animations
+            document.querySelectorAll('.course-card').forEach(card => {
+                card.style.animation = 'none';
+                void card.offsetHeight; // Trigger reflow
+                card.style.animation = '';
+            });
         });
+    
+        // Year Switch
+        document.getElementById('yearSelect').addEventListener('change', function() {
+            const year = this.value;
+            document.querySelectorAll('.semester-section').forEach(section => {
+                section.classList.remove('active');
+                if(section.dataset.semester === year) {
+                    section.classList.add('active');
+                }
+            });
+            localStorage.setItem('year', year);
+        });
+    
+        // Initialize year
+        const savedYear = localStorage.getItem('year') || '1';
+        document.getElementById('yearSelect').value = savedYear;
+        document.querySelector(`[data-semester="${savedYear}"]`).classList.add('active');
     </script>
 </body>
 </html>
